@@ -1,4 +1,5 @@
 import math
+
 from src.models import Panel
 
 
