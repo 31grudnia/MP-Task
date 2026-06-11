@@ -1,9 +1,6 @@
 from typing import Any
 
-
-class ValidationError(Exception):
-    """Custom exception raised when raw input coordinates validation fails."""
-    pass
+from src.utils.exceptions import ValidationError
 
 
 def validate_raw_input(data: Any) -> None:
