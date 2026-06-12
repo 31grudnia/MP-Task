@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: solar_array_calculator:latest
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    command: pytest -v
