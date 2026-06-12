@@ -22,21 +22,19 @@ class SolarArrayService:
         self.mount_calculator = mount_calculator or MountCalculator(settings)
         self.joint_calculator = joint_calculator or JointCalculator(settings)
 
-    def process_layout(self, raw_data: list[dict[str, Any]]) -> dict[str, list[dict[str, float]]]:
+
+    def process_layout(self, 
+                       raw_data: list[dict[str, Any]],
+                       precision: int | None = 3
+        ) -> dict[str, list[dict[str, float]]]:
         """
         Coordinates parsing, support placement, and joint calculation.
         """
-        # 1. Parse raw coordinates into domain segment structures
         segments = self.parser.parse(raw_data)
-
-        # 2. Calculate support mounts
         mount_entities = self.mount_calculator.calculate_mounts(segments)
-
-        # 3. Calculate inter-panel joints
         joint_entities = self.joint_calculator.calculate_joints(segments)
 
-        # 4. Serialize outputs (precision rounding occurs only here at the export layer)
         return {
-            "mounts": [mount.to_dict() for mount in mount_entities],
-            "joints": [joint.to_dict() for joint in joint_entities],
+            "mounts": [mount.to_dict(precision=precision) for mount in mount_entities],
+            "joints": [joint.to_dict(precision=precision) for joint in joint_entities],
         }
