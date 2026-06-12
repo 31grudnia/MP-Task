@@ -1,5 +1,5 @@
 
-# Solar Array Calculator 
+# Solar Array Calculator 🫪
 
 A stateless, interface-driven Python utility designed to calculate the precise coordinates of structural supports (**mounts**) and inter-panel **joints** for solar arrays. 
 
@@ -27,4 +27,4 @@ The test suite in `tests/` comprehensively verifies:
 * **"Single Panel, Multiple Mounts"** (verifying safety limits on isolated panels).
 * **"Broken Tooth" layout** (segmenting non-continuous rows correctly).
 
----
+# 🫪 🫪 🫪
