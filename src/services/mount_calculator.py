@@ -75,12 +75,10 @@ class MountCalculator(MountCalculatorInterface):
                 f"at y={segment.y}."
             )
 
-        for panel in segment.panels:
-            panel_supports = [x for x in supports if panel.left <= x <= panel.right]
-            for i in range(len(panel_supports) - 1):
-                span = panel_supports[i + 1] - panel_supports[i]
-                if span > self.settings.mount.span_limit:
-                    raise InfeasibleLayoutError(
-                        f"Span limit exceeded: {span:.3f} > {self.settings.mount.span_limit} "
-                        f"on panel starting at x={panel.left}."
-                    )
+        for i in range(len(supports) - 1):
+            span = supports[i + 1] - supports[i]
+            if span > self.settings.mount.span_limit:
+                raise InfeasibleLayoutError(
+                    f"Span limit exceeded: {span:.3f} > {self.settings.mount.span_limit} "
+                    f"between consecutive supports at x={supports[i]:.3f} and x={supports[i+1]:.3f}."
+                )
