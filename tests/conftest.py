@@ -10,7 +10,7 @@ def default_settings() -> Settings:
 
 
 @pytest.fixture
-def pdf_example_data() -> list[dict[str, float]]:
+def example_data() -> list[dict[str, float]]:
     """The exact panel coordinates"""
     return [
         {"x": 0, "y": 0}, {"x": 45.05, "y": 0}, {"x": 90.1, "y": 0},
